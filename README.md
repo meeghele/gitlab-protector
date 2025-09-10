@@ -1,5 +1,9 @@
 # GitLab Protector
 
+<div align="center">
+  <img src="images/gitlab-protector_512.jpg" alt="GitLab Protector Logo" width="200"/>
+</div>
+
 [![CI](https://github.com/meeghele/gitlab-protector/actions/workflows/ci.yml/badge.svg)](https://github.com/meeghele/gitlab-protector/actions)
 [![Python 3.11+](https://img.shields.io/badge/python-3.11+-blue.svg)](https://python.org)
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
