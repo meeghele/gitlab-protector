@@ -189,4 +189,10 @@ This project is licensed under the MIT License.
 
 ## Contributing
 
-Contributions are welcome! Please feel free to submit issues, feature requests, or pull requests.
+Contributions are welcome, please follow the semantic versioning branch naming convention:
+
+- **main**: Production-ready code
+- **develop**: Integration branch for features
+- **feat/**: New features (`feat/user-authentication`)
+- **fix/**: Bug fixes (`fix/connection-timeout`)
+- **chore/**: Maintenance (`chore/update-dependencies`)
