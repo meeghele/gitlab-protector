@@ -1,0 +1,59 @@
+policies:
+  - .owner: &owner
+      merge_access_level: "owner"
+      push_access_level: "owner"
+  - .maintainer: &maintainer
+      merge_access_level: "maintainer"
+      push_access_level: "maintainer"
+  - .developer: &developer
+      merge_access_level: "developer"
+      push_access_level: "developer"
+  - .none: &none
+      merge_access_level: "no_access"
+      push_access_level: "no_access"
+
+tags:
+  -
+    name: "v*"
+    <<: *maintainer
+  -
+    name: "build-*"
+    <<: *maintainer
+  -
+    name: "*-deploy"
+    <<: *maintainer
+  -
+    name: "tags/*"
+    <<: *maintainer
+
+branches:
+  -
+    name: "main"
+    <<: *maintainer
+  -
+    name: "release/*"
+    <<: *maintainer
+  -
+    name: "backport/*"
+    <<: *maintainer
+  -
+    name: "production/*"
+    <<: *maintainer
+  -
+    name: "develop"
+    <<: *developer
+  -
+    name: "feature/*"
+    <<: *developer
+  -
+    name: "chore/*"
+    <<: *developer
+  -
+    name: "bug/*"
+    <<: *developer
+  -
+    name: "hotfix/*"
+    <<: *developer
+  -
+    name: "devel/*"
+    <<: *developer
