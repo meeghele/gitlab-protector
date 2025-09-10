@@ -2,9 +2,19 @@ name: GitLab Protector CI
 
 on:
   push:
-    branches: [ main, develop ]
+    branches:
+      - main
+      - develop
+      - feat/**
+      - chore/**
+      - fix/**
   pull_request:
-    branches: [ main, develop ]
+    branches:
+      - main
+      - develop
+      - feat/**
+      - chore/**
+      - fix/**
 
 jobs:
   test:
@@ -42,3 +52,4 @@ jobs:
     
     - name: Validate script
       run: make validate
+
