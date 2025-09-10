@@ -1,4 +1,4 @@
-name: GitLab Protector CI
+name: gitlab-protector-ci
 
 on:
   push:
