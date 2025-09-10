@@ -16,7 +16,7 @@ install: ## Install production dependencies
 
 install-dev: ## Install development dependencies
 	$(PIP) install -r requirements.txt
-	$(PIP) install flake8 pylint black isort mypy
+	$(PIP) install -r requirements-dev.txt
 
 lint: ## Run linting with flake8 and pylint
 	@echo "Running flake8..."
