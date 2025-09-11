@@ -6,11 +6,11 @@
 
 # GitLab Protector
 
+A Python command-line tool that manages branch and tag protection policies for GitLab projects based on YAML configuration files.
+
 <div align="center">
   <img src="images/gitlab-protector_512.jpg" alt="GitLab Protector Logo" width="200"/>
 </div>
-
-A Python command-line tool that manages branch and tag protection policies for GitLab projects based on YAML configuration files.
 
 ## Features
 
