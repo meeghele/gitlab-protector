@@ -22,34 +22,33 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     
-    - name: Set up Python
+    - name: set up python
       uses: actions/setup-python@v4
       with:
         python-version: '3.11'
-    
-    - name: Cache pip dependencies
+
+    - name: cache pip dependencies
       uses: actions/cache@v3
       with:
         path: ~/.cache/pip
         key: ${{ runner.os }}-pip-${{ hashFiles('requirements.txt') }}
         restore-keys: |
           ${{ runner.os }}-pip-
-    
-    - name: Install dependencies
-      run: make install-dev
-    
-    - name: Run linting
-      run: make lint
-    
-    - name: Run type checking
-      run: make type-check
-    
-    - name: Run basic tests
-      run: make test
-    
-    - name: Run unit tests
-      run: make test-unit
-    
-    - name: Validate script
-      run: make validate
 
+    - name: install dependencies
+      run: make install-dev
+
+    - name: run linting
+      run: make lint
+
+    - name: run type checking
+      run: make type-check
+
+    - name: run basic tests
+      run: make test
+
+    - name: run unit tests
+      run: make test-unit
+
+    - name: validate script
+      run: make validate
