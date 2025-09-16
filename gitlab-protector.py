@@ -20,6 +20,7 @@ import argparse
 import os
 import sys
 from dataclasses import dataclass
+from enum import Enum
 from typing import Dict, List, NoReturn, Optional
 
 import colorama
@@ -40,16 +41,37 @@ EXIT_GITLAB_CREATE_TAG_ERROR = 21
 EXIT_GITLAB_CREATE_BRANCH_ERROR = 22
 EXIT_AUTH_ERROR = 30
 
+
+class AccessLevel(Enum):
+    """Enumeration for GitLab access levels."""
+
+    NO_ACCESS = "no_access"
+    MINIMAL_ACCESS = "minimal_access"
+    GUEST = "guest"
+    REPORTER = "reporter"
+    DEVELOPER = "developer"
+    MAINTAINER = "maintainer"
+    OWNER = "owner"
+    ADMIN = "admin"
+
+
+class ProtectionType(Enum):
+    """Enumeration for protection types."""
+
+    TAGS = "tags"
+    BRANCHES = "branches"
+
+
 # Access level mapping
 ACCESS_LEVELS = {
-    "no_access": gitlab.const.AccessLevel.NO_ACCESS,
-    "minimal_access": gitlab.const.AccessLevel.MINIMAL_ACCESS,
-    "guest": gitlab.const.AccessLevel.GUEST,
-    "reporter": gitlab.const.AccessLevel.REPORTER,
-    "developer": gitlab.const.AccessLevel.DEVELOPER,
-    "maintainer": gitlab.const.AccessLevel.MAINTAINER,
-    "owner": gitlab.const.AccessLevel.OWNER,
-    "admin": gitlab.const.AccessLevel.ADMIN,
+    AccessLevel.NO_ACCESS.value: gitlab.const.AccessLevel.NO_ACCESS,
+    AccessLevel.MINIMAL_ACCESS.value: gitlab.const.AccessLevel.MINIMAL_ACCESS,
+    AccessLevel.GUEST.value: gitlab.const.AccessLevel.GUEST,
+    AccessLevel.REPORTER.value: gitlab.const.AccessLevel.REPORTER,
+    AccessLevel.DEVELOPER.value: gitlab.const.AccessLevel.DEVELOPER,
+    AccessLevel.MAINTAINER.value: gitlab.const.AccessLevel.MAINTAINER,
+    AccessLevel.OWNER.value: gitlab.const.AccessLevel.OWNER,
+    AccessLevel.ADMIN.value: gitlab.const.AccessLevel.ADMIN,
 }
 
 
@@ -97,8 +119,10 @@ class ConfigValidator:
             branches = data.get("branches", [])
 
             # Validate tag and branch configurations
-            ConfigValidator._validate_protection_rules(tags, "tags")
-            ConfigValidator._validate_protection_rules(branches, "branches")
+            ConfigValidator._validate_protection_rules(tags, ProtectionType.TAGS.value)
+            ConfigValidator._validate_protection_rules(
+                branches, ProtectionType.BRANCHES.value
+            )
 
             Logger.info(
                 f"Loaded {len(tags)} tag rules and {len(branches)} branch rules"
